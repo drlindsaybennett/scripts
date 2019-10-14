@@ -1,0 +1,15 @@
+#!/bin/bash
+
+xband_list=~/logs/xband03_raine_files.log
+jasmin_list=~/logs/jasmin_obs_raine_files.log
+
+for x in $(grep "dBZ.azi" $xband_list)
+do
+
+if [ $(grep -ir $x $jasmin_list | wc -l) -eq 0 ]
+then
+echo $x >> ~/logs/files_not_on_jasmin.log
+fi
+
+done
+
